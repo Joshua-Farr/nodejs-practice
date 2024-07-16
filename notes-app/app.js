@@ -1,6 +1,10 @@
-const fs = require("fs");
+const notes = require("./notes.js");
 
-fs.appendFileSync(
-  "notes.txt",
-  " And I like to play the One Piece Trading Card Game"
-);
+const myNotes = notes();
+
+console.log(myNotes);
+
+// const add = require("./utils.js");
+
+// const sum = add(1, 3);
+// console.log(sum);
