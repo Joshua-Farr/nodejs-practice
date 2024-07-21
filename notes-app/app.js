@@ -1,9 +1,9 @@
 const getNotes = require("./notes.js");
-const add = require("./utils.js");
+const validator = require("validator");
+
+let emailStatus = validator.isEmail("josh@josh.com");
+console.log(emailStatus);
 
 const message = getNotes();
 
 console.log(message);
-
-const sum = add(1, 3);
-console.log(sum);
