@@ -1,10 +1,9 @@
-const notes = require("./notes.js");
+const getNotes = require("./notes.js");
+const add = require("./utils.js");
 
-const myNotes = notes();
+const message = getNotes();
 
-console.log(myNotes);
+console.log(message);
 
-// const add = require("./utils.js");
-
-// const sum = add(1, 3);
-// console.log(sum);
+const sum = add(1, 3);
+console.log(sum);
