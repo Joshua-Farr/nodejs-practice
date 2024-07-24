@@ -1,10 +1,17 @@
-const notes = require("./notes.js");
+import chalk from "chalk";
+import notes from "./notes.js";
 
 const myNotes = notes();
 
 console.log(myNotes);
 
-// const add = require("./utils.js");
+console.log(chalk.green.inverse.bold("Success!"));
+const command = process.argv[2];
 
-// const sum = add(1, 3);
-// console.log(sum);
+console.log(process.argv);
+
+if (command === "add") {
+  console.log("Adding note!");
+} else if (command === "remove") {
+  console.log("Removing note!");
+}
