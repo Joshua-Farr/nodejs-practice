@@ -1,16 +1,25 @@
 {
   "name": "notes-app",
   "version": "1.0.0",
+<<<<<<< HEAD
   "description": "",
   "main": "app.js",
   "type": "module",
+=======
+  "main": "app.js",
+>>>>>>> f46b3d58c8344b8f4f8c3ac2e1f2593c6f4f3b7a
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
+<<<<<<< HEAD
   "dependencies": {
     "chalk": "^5.3.0",
+=======
+  "description": "",
+  "dependencies": {
+>>>>>>> f46b3d58c8344b8f4f8c3ac2e1f2593c6f4f3b7a
     "validator": "^13.12.0"
   }
 }
