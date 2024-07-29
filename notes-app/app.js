@@ -23,24 +23,39 @@ yargs(hideBin(process.argv))
 
 // Remove command
 yargs(hideBin(process.argv))
-  .command("remove", "Removing a note", function () {
-    console.log("Removing the note...");
-  })
+  .command(
+    "remove",
+    "Removing a note",
+    () => {},
+    function (argv) {
+      console.log("Removing the note...", argv);
+    }
+  )
   .parse();
 
 // List command
 yargs(hideBin(process.argv))
-  .command("list", "Listing all the notes", function () {
-    console.log("Listing all the notes...");
-  })
+  .command(
+    "list",
+    "Listing all the notes",
+    () => {},
+    function (argv) {
+      console.log("Listing all the notes...", argv);
+    }
+  )
   .parse();
 
 // Read command
 
 yargs(hideBin(process.argv))
-  .command("read", "reading all the notes", function () {
-    console.log("Reading the notes...");
-  })
+  .command(
+    "read",
+    "reading all the notes",
+    () => {},
+    function (argv) {
+      console.log("Reading the notes...", argv);
+    }
+  )
   .parse();
 
 // console.log(process.argv);
