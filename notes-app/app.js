@@ -1,18 +1,46 @@
 import chalk from "chalk";
-import notes from "./notes.js";
+import yargs from "yargs";
+import { hideBin } from "yargs/helpers";
 
-let emailStatus = validator.isEmail("josh@josh.com");
-console.log(emailStatus);
+//add, remove, read, list
 
-const message = getNotes();
+console.log(
+  "Here are the arguments that are passed:",
+  yargs(hideBin(process.argv)).argv
+);
 
-console.log(chalk.green.inverse.bold("Success!"));
-const command = process.argv[2];
+// Add command
+yargs(hideBin(process.argv))
+  .command(
+    "add",
+    "add a new note",
+    () => {},
+    function (argv) {
+      console.log("Adding a new note...", argv);
+    }
+  )
+  .parse();
 
-console.log(process.argv);
+// Remove command
+yargs(hideBin(process.argv))
+  .command("remove", "Removing a note", function () {
+    console.log("Removing the note...");
+  })
+  .parse();
 
-if (command === "add") {
-  console.log("Adding note!");
-} else if (command === "remove") {
-  console.log("Removing note!");
-}
+// List command
+yargs(hideBin(process.argv))
+  .command("list", "Listing all the notes", function () {
+    console.log("Listing all the notes...");
+  })
+  .parse();
+
+// Read command
+
+yargs(hideBin(process.argv))
+  .command("read", "reading all the notes", function () {
+    console.log("Reading the notes...");
+  })
+  .parse();
+
+// console.log(process.argv);
