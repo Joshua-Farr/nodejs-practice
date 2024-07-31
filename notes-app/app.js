@@ -4,19 +4,43 @@ import { hideBin } from "yargs/helpers";
 
 //add, remove, read, list
 
-console.log(
-  "Here are the arguments that are passed:",
-  yargs(hideBin(process.argv)).argv
-);
+// console.log(
+//   "Here are the arguments that are passed:",
+//   yargs(hideBin(process.argv)).argv
+// );
 
 // Add command
 yargs(hideBin(process.argv))
   .command(
     "add",
     "add a new note",
-    () => {},
+    (yargs) => {
+      return yargs.options({
+        title: {
+          describe: "Title of the note to add",
+          type: "string",
+          demandOption: true,
+        },
+        body: {
+          describe: "Body of the node to add",
+          type: "string",
+          demandOption: true,
+        },
+      });
+    },
     function (argv) {
-      console.log("Adding a new note...", argv);
+      console.log(
+        "\n" +
+          "****************************************" +
+          "\n" +
+          "\n" +
+          "Title: " +
+          argv.title +
+          "\n" +
+          "Body: " +
+          argv.body +
+          "\n"
+      );
     }
   )
   .parse();
