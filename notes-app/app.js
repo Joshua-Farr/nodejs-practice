@@ -1,6 +1,7 @@
 import chalk from "chalk";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
+import notes from "./notes.js";
 
 //add, remove, read, list
 
@@ -29,6 +30,7 @@ yargs(hideBin(process.argv))
       });
     },
     function (argv) {
+      notes.addNote(argv.title, argv.body);
       console.log(
         "\n" +
           "****************************************" +
