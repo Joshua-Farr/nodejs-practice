@@ -62,7 +62,8 @@ yargs(hideBin(process.argv))
     "Listing all the notes",
     () => {},
     function (argv) {
-      console.log("Listing all the notes...", argv);
+      // console.log("Listing all the notes...", argv);
+      notes.listNotes();
     }
   )
   .parse();
@@ -72,9 +73,17 @@ yargs(hideBin(process.argv))
   .command(
     "read",
     "reading all the notes",
-    () => {},
+    (yargs) => {
+      return yargs.options({
+        title: {
+          describe: "Title of the note to read",
+          type: "string",
+          demandOption: true,
+        },
+      });
+    },
     function (argv) {
-      console.log("Reading the notes...", argv);
+      notes.readNote(argv.title);
     }
   )
   .parse();

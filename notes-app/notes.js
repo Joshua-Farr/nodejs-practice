@@ -1,19 +1,12 @@
 import fs from "fs";
 import chalk from "chalk";
 
-const getNotes = () => {
-  return "Your notes...";
-};
-
 const addNote = (title, body) => {
-  console.log("Adding Note...");
   const notes = loadNotes();
 
-  const duplicateNotes = notes.filter((note) => {
-    return note.title === title ? true : false;
-  });
+  const duplicateNote = notes.find((note) => note.title === title);
 
-  if (duplicateNotes.length === 0) {
+  if (!duplicateNote) {
     notes.push({
       title: title,
       body: body,
@@ -21,8 +14,32 @@ const addNote = (title, body) => {
     saveNotes(notes);
     console.log("New note added!");
   } else {
-    console.log("Note " + title + " taken!");
+    console.log(chalk.red.inverse("Note " + title + " taken!"));
   }
+};
+
+const readNote = (title) => {
+  const notes = loadNotes();
+
+  const note = notes.find((note) => note.title === title);
+  if (note) {
+    console.log(chalk.inverse("Title: "));
+    console.log(note.title);
+    console.log(chalk.inverse("Body: "));
+    console.log(note.body);
+  } else {
+    console.log(chalk.bgRed("Note:", title, "was not found!"));
+  }
+};
+
+const listNotes = () => {
+  const notes = loadNotes();
+
+  console.log(chalk.inverse("Here are your notes: "));
+
+  notes.forEach((note) => {
+    console.log(`- ${note.title}`);
+  });
 };
 
 const saveNotes = (notes) => {
@@ -57,4 +74,4 @@ const loadNotes = () => {
   }
 };
 
-export default { getNotes, addNote, removeNote };
+export default { getNotes, addNote, removeNote, listNotes, readNote };
