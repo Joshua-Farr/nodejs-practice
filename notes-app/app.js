@@ -31,18 +31,6 @@ yargs(hideBin(process.argv))
     },
     function (argv) {
       notes.addNote(argv.title, argv.body);
-      console.log(
-        "\n" +
-          "****************************************" +
-          "\n" +
-          "\n" +
-          "Title: " +
-          argv.title +
-          "\n" +
-          "Body: " +
-          argv.body +
-          "\n"
-      );
     }
   )
   .parse();

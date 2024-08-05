@@ -5,14 +5,29 @@ const getNotes = () => {
 };
 
 const addNote = (title, body) => {
+  console.log("Adding Note...");
   const notes = loadNotes();
 
-  notes.push({
-    title: title,
-    body: body,
+  const duplicateNotes = notes.filter((note) => {
+    return note.title === title ? true : false;
   });
 
-  console.log("Notes: ", notes);
+  if (duplicateNotes.length === 0) {
+    notes.push({
+      title: title,
+      body: body,
+    });
+    saveNotes(notes);
+    console.log("New note added!");
+  } else {
+    console.log("Note " + title + " taken!");
+  }
+};
+
+const saveNotes = (notes) => {
+  console.log("Saving note...");
+  const dataJSON = JSON.stringify(notes);
+  fs.writeFileSync("notes.json", dataJSON);
 };
 
 const loadNotes = () => {
