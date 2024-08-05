@@ -40,9 +40,17 @@ yargs(hideBin(process.argv))
   .command(
     "remove",
     "Removing a note",
-    () => {},
+    (yargs) => {
+      return yargs.options({
+        title: {
+          describe: "Title of the note to remove",
+          type: "string",
+          demandOption: true,
+        },
+      });
+    },
     function (argv) {
-      console.log("Removing the note...", argv);
+      notes.removeNote(argv.title);
     }
   )
   .parse();
@@ -60,7 +68,6 @@ yargs(hideBin(process.argv))
   .parse();
 
 // Read command
-
 yargs(hideBin(process.argv))
   .command(
     "read",

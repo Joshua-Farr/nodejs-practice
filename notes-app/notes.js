@@ -1,4 +1,5 @@
 import fs from "fs";
+import chalk from "chalk";
 
 const getNotes = () => {
   return "Your notes...";
@@ -30,6 +31,22 @@ const saveNotes = (notes) => {
   fs.writeFileSync("notes.json", dataJSON);
 };
 
+const removeNote = (title) => {
+  console.log("Removing the note...", title);
+  const notes = loadNotes();
+
+  const newNotes = notes.filter((note) => {
+    return note.title === title ? false : true;
+  });
+
+  if (newNotes.length === notes.length) {
+    console.log(chalk.bgRed("Note does not exist"));
+  } else {
+    console.log(chalk.bgGreen("Note Removed!"));
+    saveNotes(newNotes);
+  }
+};
+
 const loadNotes = () => {
   try {
     const dataBuffer = fs.readFileSync("notes.json");
@@ -40,4 +57,4 @@ const loadNotes = () => {
   }
 };
 
-export default { getNotes, addNote };
+export default { getNotes, addNote, removeNote };
