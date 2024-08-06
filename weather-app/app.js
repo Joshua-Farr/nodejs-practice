@@ -1,11 +1,10 @@
-console.log("Starting...");
+const request = require("postman-request");
 
-setTimeout(() => {
-  console.log("2 second timer");
-}, 2000);
+const URL = "http://api.weatherapi.com/v1/current.json?key=&q=London&aqi=no";
 
-setTimeout(() => {
-  console.log("0 second timer");
-}, 0);
-
-console.log("Stopping...");
+request({ url: URL, json: true }, (error, response) => {
+  const data = response.body.current;
+  console.log(
+    `It is currently ${data.temp_f} degrees out and ${data.condition.text}!`
+  );
+});
