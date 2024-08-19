@@ -13,6 +13,8 @@ const searchTerm = document.querySelector("input");
 const message1 = document.querySelector("#message-1");
 const message2 = document.querySelector("#message-2");
 
+const PORT = process.env.PORT;
+
 weatherForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const location = searchTerm.value;
