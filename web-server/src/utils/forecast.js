@@ -16,7 +16,7 @@ const forecast = (latitude, longitude, callback) => {
 
       callback(
         undefined,
-        `It is currently ${temp_f} degrees out and ${condition.text}!`
+        `It is currently ${temp_f} degrees out and ${condition.text}! The windspeed is currently ${body.current.wind_mph} miles per hour`
       );
     }
   });
