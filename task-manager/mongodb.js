@@ -9,10 +9,18 @@ async function main() {
 
   const db = client.db(databaseName);
 
-  db.collection("users").insertOne({
-    name: "Josh",
-    age: 31,
-  });
+  db.collection("users").insertOne(
+    {
+      name: "Josh",
+      age: 31,
+    },
+    (error, result) => {
+      if (error) {
+        return console.log("Unable to insert user");
+      }
+      console.log(result.insertedId);
+    }
+  );
 }
 
 main().catch(console.error);
